@@ -1,11 +1,11 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.6.1
+Version:	3.6.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	e90bedaa10747865477217dc9497c948
+# Source0-md5:	ef93fc9512e6797244346b4f9daf85f1
 BuildRequires:	GConf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -92,7 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mutter-window-demo
 %attr(755,root,root) %{_libdir}/mutter/plugins/default.so
 %{_datadir}/%{name}
-%{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
 %{_desktopdir}/mutter.desktop
