@@ -1,0 +1,13 @@
+diff -aurN mutter-3.6.2.orig/src/compositor/meta-window-actor.c mutter-3.6.2/src/compositor/meta-window-actor.c
+--- mutter-3.6.2.orig/src/compositor/meta-window-actor.c	2012-11-21 14:50:56.452565443 +0100
++++ mutter-3.6.2/src/compositor/meta-window-actor.c	2012-11-21 14:51:36.722911246 +0100
+@@ -1193,9 +1193,6 @@
+   int num_monitors = meta_screen_get_n_monitors (screen);
+   int i;
+ 
+-  if (!meta_window_is_override_redirect (metaWindow))
+-    return FALSE;
+-
+   if (priv->opacity != 0xff)
+     return FALSE;
+ 

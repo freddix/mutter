@@ -1,12 +1,12 @@
 Summary:	Window manager
 Name:		mutter
 Version:	3.6.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.6/%{name}-%{version}.tar.xz
 # Source0-md5:	ef93fc9512e6797244346b4f9daf85f1
-BuildRequires:	GConf-devel
+Patch0:		%{name}-unredirect-all-fullscreen-windows.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
@@ -45,6 +45,7 @@ This is the package containing the header files for Mutter library.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
