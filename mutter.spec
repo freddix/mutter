@@ -1,12 +1,11 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.6.3
+Version:	3.8.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	f04273e3e40b484dd0e36f7e8f5783ef
-Patch0:		%{name}-unredirect-all-fullscreen-windows.patch
+Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	7c77374df3d0a25865fc75d192060c9b
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
@@ -45,7 +44,6 @@ This is the package containing the header files for Mutter library.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -95,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
+%{_datadir}/gnome-control-center/keybindings/50-mutter-navigation.xml
+%{_datadir}/gnome-control-center/keybindings/50-mutter-system.xml
 %{_desktopdir}/mutter.desktop
 %{_mandir}/man1/*.1*
 
