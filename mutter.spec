@@ -1,11 +1,11 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.8.0
+Version:	3.8.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	7c77374df3d0a25865fc75d192060c9b
+# Source0-md5:	b61374f2b8f978c99c2e8d00b7774255
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
