@@ -1,18 +1,18 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.8.4
+Version:	3.10.0.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/mutter/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	cfe0233d783f1f6ee529448c1888492e
+Source0:	https://download.gnome.org/sources/mutter/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	b063138ece1c93de5797cc306021c4bd
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel
+BuildRequires:	gobject-introspection-devel >= 1.38.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	intltool
 BuildRequires:	libtool
@@ -20,7 +20,7 @@ BuildRequires:	pkg-config
 BuildRequires:	startup-notification-devel
 Requires(post,postun):	glib-gio-gsettings
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gsettings-desktop-schemas
+Requires:	gsettings-desktop-schemas >= 3.10.0
 Provides:	window-manager
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{la,ca@valencia}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{la,ca@valencia}
 
 %find_lang %{name}
 
@@ -86,11 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %dir %{_libdir}/mutter/plugins
 %attr(755,root,root) %{_bindir}/mutter
-%attr(755,root,root) %{_bindir}/mutter-message
-%attr(755,root,root) %{_bindir}/mutter-theme-viewer
-%attr(755,root,root) %{_bindir}/mutter-window-demo
 %attr(755,root,root) %{_libdir}/mutter/plugins/default.so
-%{_datadir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-navigation.xml
