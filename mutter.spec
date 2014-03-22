@@ -1,11 +1,13 @@
 Summary:	Window manager
 Name:		mutter
 Version:	3.10.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/mutter/3.10/%{name}-%{version}.tar.xz
 # Source0-md5:	e25602e010097aa44611da102c514c7c
+Patch0:		d2a1db8834bf0a9007bf6924b006a6f2c94ce88d.patch
+Patch1:		3548e6da7323a69a446d92369fd5cce78a2c9336.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
@@ -44,6 +46,8 @@ This is the package containing the header files for Mutter library.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
