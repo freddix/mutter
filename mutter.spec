@@ -1,20 +1,18 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.10.4
-Release:	2
+Version:	3.12.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/mutter/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	e25602e010097aa44611da102c514c7c
-Patch0:		d2a1db8834bf0a9007bf6924b006a6f2c94ce88d.patch
-Patch1:		3548e6da7323a69a446d92369fd5cce78a2c9336.patch
+Source0:	https://download.gnome.org/sources/mutter/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	12bd2f1e49430705e029825901b60704
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gobject-introspection-devel >= 1.38.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.12.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	intltool
 BuildRequires:	libtool
@@ -22,7 +20,7 @@ BuildRequires:	pkg-config
 BuildRequires:	startup-notification-devel
 Requires(post,postun):	glib-gio-gsettings
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gsettings-desktop-schemas >= 3.10.0
+Requires:	gsettings-desktop-schemas >= 3.12.0
 Provides:	window-manager
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,8 +44,6 @@ This is the package containing the header files for Mutter library.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__intltoolize}
