@@ -1,11 +1,11 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.12.0
+Version:	3.12.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/mutter/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	12bd2f1e49430705e029825901b60704
+# Source0-md5:	3b548811c29507b06aa645c1be05e4cc
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
@@ -65,7 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{la,ca@valencia}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
