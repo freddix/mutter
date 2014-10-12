@@ -1,18 +1,18 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/mutter/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	3b548811c29507b06aa645c1be05e4cc
+Source0:	https://download.gnome.org/sources/mutter/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	f980505e4198399aa2224343dd0a9f3e
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gobject-introspection-devel >= 1.40.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.12.0
-BuildRequires:	gtk+3-devel >= 3.12.0
+BuildRequires:	gobject-introspection-devel >= 1.42.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.14.0
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	intltool
 BuildRequires:	libtool
@@ -20,9 +20,11 @@ BuildRequires:	pkg-config
 BuildRequires:	startup-notification-devel
 Requires(post,postun):	glib-gio-gsettings
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gsettings-desktop-schemas >= 3.12.0
+Requires:	gsettings-desktop-schemas >= 3.14.0
 Provides:	window-manager
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_libexecdir	%{_libdir}/mutter
 
 %description
 Window manager.
@@ -42,6 +44,14 @@ Requires:	%{name}-libs = %{version}-%{release}
 %description devel
 This is the package containing the header files for Mutter library.
 
+%package apidocs
+Summary:	Meta API documentation
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+Meta API documentation.
+
 %prep
 %setup -q
 
@@ -56,7 +66,9 @@ This is the package containing the header files for Mutter library.
 	ZENITY=%{_bindir}/zenity	\
 	--disable-schemas-compile	\
 	--disable-silent-rules		\
-	--disable-static
+	--disable-static		\
+	--enable-compile-warnings=minimum   \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -85,15 +97,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS
 %dir %{_libdir}/mutter/plugins
 %attr(755,root,root) %{_bindir}/mutter
 %attr(755,root,root) %{_libdir}/mutter/plugins/default.so
+%attr(755,root,root) %{_libexecdir}/mutter-restart-helper
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
-%{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-navigation.xml
 %{_datadir}/gnome-control-center/keybindings/50-mutter-system.xml
+%{_datadir}/gnome-control-center/keybindings/50-mutter-windows.xml
 %{_desktopdir}/mutter.desktop
+%{_desktopdir}/mutter-wayland.desktop
 %{_mandir}/man1/*.1*
 
 %files libs
@@ -109,4 +124,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/mutter
 %{_pkgconfigdir}/*.pc
 %{_libdir}/mutter/Meta-*.gir
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/meta
 
