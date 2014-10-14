@@ -1,11 +1,11 @@
 Summary:	Window manager
 Name:		mutter
-Version:	3.14.0
+Version:	3.14.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/mutter/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	f980505e4198399aa2224343dd0a9f3e
+# Source0-md5:	eda38cf1ad26ab8e1d4f3b74bbd7af47
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	clutter-devel
@@ -21,6 +21,7 @@ BuildRequires:	startup-notification-devel
 Requires(post,postun):	glib-gio-gsettings
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gsettings-desktop-schemas >= 3.14.0
+Requires:	zenity
 Provides:	window-manager
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
